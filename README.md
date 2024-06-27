@@ -102,7 +102,7 @@ C:\Users\User>cd C:\Users\User\Desktop\Новая папка
 C:\Users\User\Desktop\Новая папка>python main.py
 ```
 
-# Сохранение фотографий с сайта NATA
+# Сохранение фотографий с сайта EPIC NATA
 
 ## Окружение
 
