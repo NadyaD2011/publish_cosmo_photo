@@ -18,7 +18,7 @@ Python3 должен быть уже установлен.
 Затем используйте `pip` (или `pip3`, есть конфликт с Python2) для
 установки зависимостей:
 ```
-pip install -r requirements.txt
+pip install -r requirements_spacex.txt
 ```
 
 Рекомендуется использовать [virtualent/vent](http://docs.python.orgs/3/library/venv.html)
@@ -71,7 +71,7 @@ Python3 должен быть уже установлен.
 Затем используйте `pip` (или `pip3`, есть конфликт с Python2) для
 установки зависимостей:
 ```
-pip install -r requirements.txt
+pip install -r requirements_nasa.txt
 ```
 
 Рекомендуется использовать [virtualent/vent](http://docs.python.orgs/3/library/venv.html)
@@ -122,7 +122,7 @@ Python3 должен быть уже установлен.
 Затем используйте `pip` (или `pip3`, есть конфликт с Python2) для
 установки зависимостей:
 ```
-pip install -r requirements.txt
+pip install -r requirements_epic_nasa.txt
 ```
 
 Рекомендуется использовать [virtualent/vent](http://docs.python.orgs/3/library/venv.html)
