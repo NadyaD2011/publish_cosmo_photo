@@ -1,5 +1,6 @@
 import requests
 import os
+import argparse
 
 def create_folder(folder_name):
   if not os.path.exists(folder_name):
@@ -20,13 +21,13 @@ def save_files(folder_name, photo_urls):
 
 def main():
     folder_name = 'images'
-    id = argparse.ArgumentParser()
-    id.add_argument("id", help="Ваш id")
-    id = parser.parse_args()
-    id = id.id
-
     create_folder(folder_name)
 
+    id = argparse.ArgumentParser()
+    id.add_argument("id", help="Ваш id")
+    id = id.parse_args(-c)
+    id = id.id
+    
     try:
         if id != '':
             fetch_spacex_last_launch(folder_name, id)
