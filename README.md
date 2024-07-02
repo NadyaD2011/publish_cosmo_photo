@@ -39,14 +39,14 @@ pip install -r requirements_spacex.txt
 
 ```
 C:\Users\User>cd C:\Users\User\Desktop\`название папки с проектом`
-C:\Users\User\Desktop\Новая папка>python main.py `ваш id`
+C:\Users\User\Desktop\Новая папка>python fetch_spacex_images.py `ваш id`
 ```
 
 Вывод:
 
 ```
 C:\Users\User>cd C:\Users\User\Desktop\Новая папка
-C:\Users\User\Desktop\Новая папка>python main.py ничего или id
+C:\Users\User\Desktop\Новая папка>python fetch_spacex_images.py ничего или id
 ```
 
 `Если id не передаётся, то будут сохранятся фотографии с последнего запуска`
@@ -92,14 +92,14 @@ pip install -r requirements_nasa.txt
 
 ```
 C:\Users\User>cd C:\Users\User\Desktop\`название папки с проектом`
-C:\Users\User\Desktop\Новая папка>python main.py
+C:\Users\User\Desktop\Новая папка>python save_photos_nasa.py
 ```
 
 Вывод:
 
 ```
 C:\Users\User>cd C:\Users\User\Desktop\Новая папка
-C:\Users\User\Desktop\Новая папка>python main.py
+C:\Users\User\Desktop\Новая папка>python save_photos_nasa.py
 ```
 
 # Сохранение фотографий с сайта EPIC NATA
@@ -143,14 +143,93 @@ pip install -r requirements_epic_nasa.txt
 
 ```
 C:\Users\User>cd C:\Users\User\Desktop\`название папки с проектом`
-C:\Users\User\Desktop\Новая папка>python main.py
+C:\Users\User\Desktop\Новая папка>python save_epic_photos_nasa.py
 ```
 
 Вывод:
 
 ```
 C:\Users\User>cd C:\Users\User\Desktop\Новая папка
-C:\Users\User\Desktop\Новая папка>python main.py
+C:\Users\User\Desktop\Новая папка>python save_epic_photos_nasa.py
+```
+# Отправка ваших сохранённых фотографий в телеграм канал с помощью бота
+
+## Окружение
+
+Скрипт позволяет отправлять ваши ранее сохранённые фотографии в ваш телеграм канал. Но с определённым промежутком во времени. `На пример: одну фотографию раз в 4 часа, также это настройки, если вы ничего в консоль не передадите`. Но всё таки, чтобы всё работало надо немного информации передать боту заранее.
+
+Программа берёт при запуске:
+
+- Из консоли
+    - Если передаёте, то будет отправлять фотку раз в определённое количество времени. `Вы можете вызвать код и передать цифру 3 и фотки будут публиковаться раз в 3 часа`. Удобно же!
+    - Или вы ничего не передаёте и бот публикует фотки раз в 4 часа.
+
+`Время задержки между публикачыей фото, можно настраивать!` Это описано в разделе 'Настройки окружения'  
+
+До запуска вам нужно:
+ - Выполнить установку всех библиотек на ваш компьютер. Это описано а разделе 'Установка зависемостей'
+ - Создать файл .env если он у вас его нет или просто написать в нём такие строчки:
+ ```
+    CHAT_ID='@id вашего канала'
+    TOKEN_BOT='7020625424:AAFbZ-VP81FKchx7yJezMZy7odYsSKvYYVg'
+ ```
+Пример: @epic_photo_nasa_spacex
+
+## Установка зависемостей
+
+Python3 должен быть уже установлен. 
+Затем используйте `pip` (или `pip3`, есть конфликт с Python2) для
+установки зависимостей:
+```
+pip install -r requirements_bot.txt
+```
+
+Рекомендуется использовать [virtualent/vent](http://docs.python.orgs/3/library/venv.html)
+
+## Настройка переменных окружения
+
+`folder_name` - название папки
+
+`frequency` - передаваемая переменная при запуске код
+
+### Как же их получить?
+
+`frequency` передаётся в запуске. Посмотреть как передовать показано в разделе 'Окружение'.
+
+### Где же обещанное настраивание времени?
+
+Вот и оно! Чтобы настраивать время задержки, то вам потребуется файл `work_telegram_bot.py`. В нём вам надо найти такие строчки, как:
+```Python
+for filename in files:
+            bot.send_document(chat_id=chat_id, document=open(f'images/{filename}', 'rb'))
+            time.sleep(frequency*3600)
+```
+Тут вам надо найти строчку
+```Python
+time.sleep(frequency*3600)
+```
+И тут вы уже можете менять настройки. Сейчас переменная `frequency` умножается на количество секунд в часу. Ведь 3600 - это количество секунд в часу. И вы можете поменять на такие значения:
+
+- 60. На пример: вы ничего не передаёте и фотографии публикуются раз в 4 минуты.
+
+- 1800. На пример вы передаёте 1 и фотографии публикуются раз в полчаса.
+
+- Или на ваше усмотрение.
+
+## Запуск программы
+
+`В примере запуск производится в командной строке`
+
+```
+C:\Users\User>cd C:\Users\User\Desktop\`название папки с проектом`
+C:\Users\User\Desktop\Новая папка>python work_telegram_bot.py `ваша задержка`
+```
+
+Вывод:
+
+```
+C:\Users\User>cd C:\Users\User\Desktop\Новая папка
+C:\Users\User\Desktop\Новая папка>python work_telegram_bot.py ничего или задержка
 ```
 
 # Цель проекта
