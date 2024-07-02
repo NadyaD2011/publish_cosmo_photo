@@ -1,5 +1,6 @@
 from datetime import datetime
 from dotenv import load_dotenv
+from save_foto import save_photo
 import requests
 import os
 
@@ -7,7 +8,7 @@ def create_folder(folder_name):
   if not os.path.exists(folder_name):
       os.makedirs(folder_name)
 
-def save_epic_photo(folder_name, api_key):
+def save_epic_photo(folder_name, api_key, name_foto):
     url = 'https://api.nasa.gov/EPIC/api/natural/image'
     params = {'api_key': api_key, 'count': 10}
     response = requests.get(url, params=params)
@@ -22,21 +23,16 @@ def save_epic_photo(folder_name, api_key):
         photo_urls.append(link_path)
 
     del photo_urls[-13:-1]
-    save_photo(photo_urls, folder_name)
-    
-def save_photo(photo_urls, folder_name):
-    for number_url, photo_url in enumerate(photo_urls):
-        response = requests.get(photo_url)
-        with open(f'{folder_name}/nasa_epiс_{number_url}.png', 'wb') as file:
-            file.write(response.content)
+    save_photo(photo_urls, folder_name, name_foto)
         
 def main():
     load_dotenv()
     api_key = os.environ['API_KEY']
     folder_name = 'images'
+    name_foto = 'nasa_epiс_'
   
     create_folder(folder_name)
-    save_epic_photo(folder_name, api_key)
+    save_epic_photo(folder_name, api_key, name_foto)
 
 
 if __name__ == '__main__':
