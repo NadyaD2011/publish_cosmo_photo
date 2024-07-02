@@ -11,6 +11,7 @@ def fetch_spacex_last_launch(folder_name, id):
     response = requests.get(image_link)
     response.raise_for_status()
     photo_urls = response.json()['links']['flickr']['original']
+    print(photo_urls)
     save_files(folder_name, photo_urls)
 
 def save_files(folder_name, photo_urls):
@@ -19,20 +20,18 @@ def save_files(folder_name, photo_urls):
         with open(f'{folder_name}/spacex{number_url}.jpg', 'wb') as file:
             file.write(response.content)
 
+
 def main():
     folder_name = 'images'
     create_folder(folder_name)
 
-    id = argparse.ArgumentParser()
-    id.add_argument("id", help="Ваш id")
-    id = id.parse_args(-c)
-    id = id.id
-    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--id", help="Ваш id", default='5eb87d47ffd86e000604b38a')
+    args = parser.parse_args()
+    id = args.id
+
     try:
-        if id != '':
-            fetch_spacex_last_launch(folder_name, id)
-        else:
-            fetch_spacex_last_launch(folder_name, id='latest')
+        fetch_spacex_last_launch(folder_name, id)
     except requests.exceptions.HTTPError as error:
         print("Can't get data from server:\n{0}".format(error))
 
