@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import telegram
 import os
 import argparse
@@ -11,10 +12,10 @@ def open_photos(frequency, bot, chat_id):
             files = files
 
         random.shuffle(files)
-        
+
         for filename in files:
             bot.send_document(chat_id=chat_id, document=open(f'images/{filename}', 'rb'))
-            time.sleep(frequency)
+            time.sleep(frequency*3600)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -23,8 +24,9 @@ def main():
     frequency = args.frequency
     frequency = int(frequency)
 
-    chat_id = '@epic_photo_nasa_spacex'
-    bot = telegram.Bot(token='7020625424:AAFbZ-VP81FKchx7yJezMZy7odYsSKvYYVg')
+    load_dotenv()
+    chat_id = os.environ['CHAT_ID']
+    bot = telegram.Bot(token=os.environ['TOKEN_BOT'])
 
     try:
         open_photos(frequency, bot, chat_id)
