@@ -6,15 +6,16 @@ import time
 import requests
 import random
 
-def publish_photos(frequency, bot, chat_id):
+def publish_photos(frequency, bot, chat_id, name_folder):
     while True:
-        for root, dirs, files in os.walk("images"):  
+        for root, dirs, files in os.walk(name_folder):  
             files = files
 
         random.shuffle(files)
 
         for filename in files:
-            bot.send_document(chat_id=chat_id, document=open(f'images/{filename}', 'rb'))
+            with open(f'{name_folder}/{filename}', 'rb') as document:
+                bot.send_document(chat_id=chat_id, document=document)
             time.sleep(frequency*3600)
 
 def main():
@@ -24,11 +25,12 @@ def main():
     frequency = args.frequency
     
     load_dotenv()
+    name_folder = 'images'
     chat_id = os.environ['CHAT_ID_TELEGRAM']
     bot = telegram.Bot(token=os.environ['TOKEN_TELEGRAM_BOT'])
 
     try:
-        publish_photos(frequency, bot, chat_id)
+        publish_photos(frequency, bot, chat_id, name_folder)
     except telegram.error.InvalidToken as error:
         print(f'У вас неправильный телеграм токен бота, {error}')
 
