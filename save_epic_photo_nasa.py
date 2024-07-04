@@ -1,6 +1,6 @@
 from datetime import datetime
 from dotenv import load_dotenv
-from auxiliary_code import save_photo, create_folder
+from auxiliary_code import save_files, create_folder
 import requests
 import os
 
@@ -20,7 +20,7 @@ def save_epic_photo(folder_name, api_key, names_foto):
         link_path = f" https://api.nasa.gov/EPIC/archive/natural/ {epic_image_data}/png/{file_name}.png"
         photo_urls.append(link_path)
 
-    save_photo(photo_urls, folder_name, names_foto)
+    save_files(folder_name, photo_urls, names_foto)
         
 def main():
     load_dotenv()
