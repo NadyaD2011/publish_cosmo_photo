@@ -20,11 +20,11 @@ def main():
     parser = argparse.ArgumentParser(description='Ваш id')
     parser.add_argument("--id", help="Ваш id", default='5eb87d47ffd86e000604b38a')
     args = parser.parse_args()
-    id = args.id
+    id_arrived = args.id
 
     try:
         create_folder(folder_name)
-        fetch_spacex_last_launch(folder_name, id, name_foto)
+        fetch_spacex_last_launch(folder_name, id_arrived , name_foto)
     except requests.exceptions.HTTPError as error:
         print("Can't get data from server:\n{0}".format(error))
 

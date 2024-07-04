@@ -16,4 +16,4 @@ def save_files(folder_name, photo_urls, name_foto):
             file.write(response.content)
 
 def create_folder(folder_name):
-    os.makedirs(folder_name, mode=0o777, exist_ok=False)
+    os.makedirs(folder_name, mode=0o777, exist_ok=True)
