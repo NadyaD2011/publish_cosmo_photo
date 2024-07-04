@@ -5,7 +5,7 @@ import requests
 import os
 
 
-def save_epic_photo(folder_name, api_key, name_foto):
+def save_epic_photo(folder_name, api_key, names_foto):
     url = 'https://api.nasa.gov/EPIC/api/natural/image'
     params = {'api_key': api_key, 'count': 10}
     response = requests.get(url, params=params)
@@ -18,18 +18,17 @@ def save_epic_photo(folder_name, api_key, name_foto):
         epic_image_data = datetime.datetime.fromisoformat(epic_image_data).strftime("%Y/%m/%d")
         link_path = f" https://api.nasa.gov/EPIC/archive/natural/ {epic_image_data}/png/{file_name}.png"
         photo_urls.append(link_path)
-
-    del photo_urls[-13:-1]
-    save_photo(photo_urls, folder_name, name_foto)
+        
+    save_photo(photo_urls, folder_name, names_foto)
         
 def main():
     load_dotenv()
     api_key = os.environ['API_KEY_NASA']
     folder_name = 'images'
-    name_foto = 'nasa_epiс_'
+    names_foto = 'nasa_epiс_'
   
     create_folder(folder_name)
-    save_epic_photo(folder_name, api_key, name_foto)
+    save_epic_photo(folder_name, api_key, names_foto)
 
 
 if __name__ == '__main__':
