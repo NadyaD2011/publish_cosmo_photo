@@ -25,8 +25,8 @@ def main():
     frequency = int(frequency)
 
     load_dotenv()
-    chat_id = os.environ['CHAT_ID']
-    bot = telegram.Bot(token=os.environ['TOKEN_BOT'])
+    chat_id = os.environ['CHAT_ID_TELEGRAM']
+    bot = telegram.Bot(token=os.environ['TOKEN_TELEGRAM_BOT'])
 
     try:
         publish_photos(frequency, bot, chat_id)

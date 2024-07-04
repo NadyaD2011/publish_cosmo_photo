@@ -24,7 +24,7 @@ def save_epic_photo(folder_name, api_key, name_foto):
         
 def main():
     load_dotenv()
-    api_key = os.environ['API_KEY']
+    api_key = os.environ['API_KEY_NASA']
     folder_name = 'images'
     name_foto = 'nasa_epiс_'
   

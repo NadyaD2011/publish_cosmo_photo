@@ -18,7 +18,7 @@ def save_photos_nasa(api_key, folder_name, name_foto):
 
 def main():
     load_dotenv()
-    api_key = os.environ['API_KEY']
+    api_key = os.environ['API_KEY_NASA']
     folder_name = 'images'
     name_foto = 'nasa_apod_'
 
