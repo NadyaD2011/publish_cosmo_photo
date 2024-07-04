@@ -17,7 +17,7 @@ def main():
     name_foto = 'spacex'
     create_folder(folder_name)
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Ваш id')
     parser.add_argument("--id", help="Ваш id", default='5eb87d47ffd86e000604b38a')
     args = parser.parse_args()
     id = args.id

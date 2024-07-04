@@ -18,8 +18,8 @@ def open_photos(frequency, bot, chat_id):
             time.sleep(frequency*3600)
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--frequency", help="Частота запусков", default='4')
+    parser = argparse.ArgumentParser(description='Частота отправки фото')
+    parser.add_argument("--frequency", help="Частота отправки фото", default='4')
     args = parser.parse_args()
     frequency = args.frequency
     frequency = int(frequency)
