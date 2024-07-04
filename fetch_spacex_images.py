@@ -5,8 +5,8 @@ import argparse
 
 
 def fetch_spacex_last_launch(folder_name, id, name_foto):
-    image_link = f"https://api.spacexdata.com/v5/launches/{id}"
-    response = requests.get(image_link)
+    foto_url = f"https://api.spacexdata.com/v5/launches/{id}"
+    response = requests.get(foto_url)
     response.raise_for_status()
     photo_urls = response.json()['links']['flickr']['original']
     save_files(folder_name, photo_urls, name_foto)
@@ -25,8 +25,8 @@ def main():
     try:
         create_folder(folder_name)
         fetch_spacex_last_launch(folder_name, id_arrived , name_foto)
-    except requests.exceptions.HTTPError as error:
-        print("Can't get data from server:\n{0}".format(error))
+    except requests.HTTPError as error:
+        print(f"Вы ввели неверный id, {error}")
 
 
 if __name__ == '__main__':

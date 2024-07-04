@@ -6,7 +6,7 @@ import time
 import requests
 import random
 
-def open_photos(frequency, bot, chat_id):
+def publish_photos(frequency, bot, chat_id):
     while True:
         for root, dirs, files in os.walk("images"):  
             files = files
@@ -29,9 +29,9 @@ def main():
     bot = telegram.Bot(token=os.environ['TOKEN_BOT'])
 
     try:
-        open_photos(frequency, bot, chat_id)
-    except requests.exceptions.HTTPError as error:
-        print("Can't get data from server:\n{0}".format(error))
+        publish_photos(frequency, bot, chat_id)
+    except telegram.error.InvalidToken as error:
+        print(f'У вас неправильный телеграм токен бота, {error}')
 
 if __name__ == "__main__":
     main()
