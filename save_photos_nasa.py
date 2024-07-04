@@ -1,11 +1,8 @@
 from dotenv import load_dotenv
-from save_foto import save_files
+from auxiliary_code import save_files, create_folder
 import requests
 import os
 
-def create_folder(folder_name):
-  if not os.path.exists(folder_name):
-      os.makedirs(folder_name)
 
 def save_photos_nasa(api_key, folder_name, name_foto):
     photo_urls = []

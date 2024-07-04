@@ -1,11 +1,8 @@
-from save_foto import save_files
+from auxiliary_code import save_files, create_folder
 import requests
 import os
 import argparse
 
-def create_folder(folder_name):
-  if not os.path.exists(folder_name):
-      os.makedirs(folder_name)
 
 def fetch_spacex_last_launch(folder_name, id, name_foto):
     image_link = f"https://api.spacexdata.com/v5/launches/{id}"
@@ -26,6 +23,7 @@ def main():
     id = args.id
 
     try:
+        create_folder(folder_name)
         fetch_spacex_last_launch(folder_name, id, name_foto)
     except requests.exceptions.HTTPError as error:
         print("Can't get data from server:\n{0}".format(error))

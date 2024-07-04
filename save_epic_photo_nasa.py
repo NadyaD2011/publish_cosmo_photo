@@ -1,12 +1,9 @@
 from datetime import datetime
 from dotenv import load_dotenv
-from save_foto import save_photo
+from auxiliary_code import save_photo, create_folder
 import requests
 import os
 
-def create_folder(folder_name):
-  if not os.path.exists(folder_name):
-      os.makedirs(folder_name)
 
 def save_epic_photo(folder_name, api_key, name_foto):
     url = 'https://api.nasa.gov/EPIC/api/natural/image'
