@@ -9,11 +9,11 @@ def get_extension(url):
     file_extension_path = os.path.splitext(fullname)
     return file_extension_path[-1]
 
-def save_files(folder_name, photo_urls, name_foto):
+def save_files(folder_name, photo_urls, names_foto):
     for number_url, photo_url in enumerate(photo_urls):
         response = requests.get(photo_url)
         response.raise_for_status()
-        with open(f'{folder_name}/{name_foto}{number_url}{get_extension(photo_url)}', 'wb') as file:
+        with open(f'{folder_name}/{names_foto}{number_url}{get_extension(photo_url)}', 'wb') as file:
             file.write(response.content)
 
 def create_folder(folder_name):
