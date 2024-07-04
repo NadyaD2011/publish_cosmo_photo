@@ -19,11 +19,10 @@ def publish_photos(frequency, bot, chat_id):
 
 def main():
     parser = argparse.ArgumentParser(description='Частота отправки фото')
-    parser.add_argument("--frequency", help="Частота отправки фото", default='4')
+    parser.add_argument("--frequency", help="Частота отправки фото", default='4', type=int)
     args = parser.parse_args()
     frequency = args.frequency
-    frequency = int(frequency)
-
+    
     load_dotenv()
     chat_id = os.environ['CHAT_ID_TELEGRAM']
     bot = telegram.Bot(token=os.environ['TOKEN_TELEGRAM_BOT'])
