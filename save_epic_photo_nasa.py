@@ -7,7 +7,8 @@ import os
 
 def save_epic_photo(folder_name, api_key, names_foto):
     url = 'https://api.nasa.gov/EPIC/api/natural/image'
-    params = {'api_key': api_key, 'count': 10}
+    count_foto = 10
+    params = {'api_key': api_key, 'count': count_foto}
     response = requests.get(url, params=params)
     response.raise_for_status()
     epic_images = response.json()
@@ -18,7 +19,7 @@ def save_epic_photo(folder_name, api_key, names_foto):
         epic_image_data = datetime.datetime.fromisoformat(epic_image_data).strftime("%Y/%m/%d")
         link_path = f" https://api.nasa.gov/EPIC/archive/natural/ {epic_image_data}/png/{file_name}.png"
         photo_urls.append(link_path)
-        
+
     save_photo(photo_urls, folder_name, names_foto)
         
 def main():
