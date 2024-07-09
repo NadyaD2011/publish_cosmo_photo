@@ -189,9 +189,9 @@ C:\Users\User\Desktop\Новая папка>python work_telegram_bot.py ниче
 - Создать файл .env если он у вас его нет или просто написать в нём такие строчки:
 
 ```
-    CHAT_ID='@id вашего канала'
-    TOKEN_BOT='7020625424:AAFbZ-VP81FKchx7yJezMZy7odYsSKvYYVg'
-    API_KEY='ваш api_key'
+    CHAT_ID_TELEGRAM='@id вашего канала'
+    TOKEN_TELEGRAM_BOT='7020625424:AAFbZ-VP81FKchx7yJezMZy7odYsSKvYYVg'
+    API_KEY_NASA='ваш api_key'
 ```
 Пример: @epic_photo_nasa_spacex
 
