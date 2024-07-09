@@ -15,6 +15,3 @@ def save_files(folder_name, photo_urls, names_foto):
         response.raise_for_status()
         with open(f'{folder_name}/{names_foto}{number_url}{get_extension(photo_url)}', 'wb') as file:
             file.write(response.content)
-
-def create_folder(folder_name):
-    os.makedirs(folder_name, mode=0o777, exist_ok=True)
