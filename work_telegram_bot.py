@@ -19,9 +19,9 @@ def publish_photos(frequency, bot, chat_id, name_folder):
             time.sleep(frequency*3600)
 
 def main():
-    parser = argparse.ArgumentParser(description='Частота отправки фото')
-    parser.add_argument("--frequency", help="Частота отправки фото", default='4', type=int)
-    args = parser.parse_args()
+    parser_frequency = argparse.ArgumentParser(description='Введите частоту отправки фото')
+    parser_frequency.add_argument("--frequency", help="Введите частоту отправки фото", default='4', type=int)
+    args = parser_frequency.parse_args()
     frequency = args.frequency
     
     load_dotenv()
@@ -31,8 +31,8 @@ def main():
 
     try:
         publish_photos(frequency, bot, chat_id, name_folder)
-    except telegram.error.InvalidToken as error:
-        print(f'У вас неправильный телеграм токен бота, {error}')
+    except telegram.error.InvalidToken:
+        print(f'У вас неправильный телеграм токен бота')
 
 if __name__ == "__main__":
     main()
