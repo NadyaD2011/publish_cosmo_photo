@@ -25,11 +25,11 @@ def main():
     load_dotenv()
     api_key = os.environ['API_KEY_NASA']
     folder_name = 'images'
-    names_foto = 'nasa_epiс_'
+    foto_prefix = 'nasa_epiс_'
     
     os.makedirs(folder_name, mode=0o777, exist_ok=True)
     photo_urls = get_epic_photo_url(api_key)
-    save_files(folder_name, photo_urls, names_foto)
+    save_files(folder_name, photo_urls, foto_prefix)
 
 
 if __name__ == '__main__':

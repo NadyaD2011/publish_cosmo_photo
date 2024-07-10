@@ -21,11 +21,11 @@ def main():
     load_dotenv()
     api_key = os.environ['API_KEY_NASA']
     folder_name = 'images'
-    name_foto = 'nasa_apod_'
+    foto_prefix = 'nasa_apod_'
 
     os.makedirs(folder_name, mode=0o777, exist_ok=True)
     photo_urls = get_nasa_photo_url(api_key)
-    save_files(folder_name, photo_urls, name_foto) 
+    save_files(folder_name, photo_urls, foto_prefix) 
 
 
 if __name__ == '__main__':
