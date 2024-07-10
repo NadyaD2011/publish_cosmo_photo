@@ -7,8 +7,8 @@ import os
 
 def save_epic_photo(api_key):
     url = 'https://api.nasa.gov/EPIC/api/natural/image'
-    quantity_foto = 10
-    params = {'api_key': api_key, 'count': quantity_foto}
+    foto_quantity = 10
+    params = {'api_key': api_key, 'count': foto_quantity}
     response = requests.get(url, params=params)
     response.raise_for_status()
     epic_images = response.json()

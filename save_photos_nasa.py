@@ -7,8 +7,8 @@ import os
 def save_photos_nasa(api_key):
     photo_urls = []
     url = f'https://api.nasa.gov/planetary/apod'
-    quantity_foto = 30
-    params = {'count': quantity_foto, "api_key": api_key}
+    foto_quantity = 30
+    params = {'count': foto_quantity, "api_key": api_key}
     response = requests.get(url, params=params)
     response.raise_for_status()
     response = response.json()
