@@ -4,7 +4,7 @@ import requests
 import os
 
 
-def save_photos_nasa(api_key):
+def get_nasa_photo_url(api_key):
     photo_urls = []
     url = f'https://api.nasa.gov/planetary/apod'
     foto_quantity = 30
@@ -24,7 +24,7 @@ def main():
     name_foto = 'nasa_apod_'
 
     os.makedirs(folder_name, mode=0o777, exist_ok=True)
-    photo_urls = save_photos_nasa(api_key)
+    photo_urls = get_nasa_photo_url(api_key)
     save_files(folder_name, photo_urls, name_foto) 
 
 

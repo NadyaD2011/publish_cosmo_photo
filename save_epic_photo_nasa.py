@@ -5,7 +5,7 @@ import requests
 import os
 
 
-def save_epic_photo(api_key):
+def get_epic_photo_url(api_key):
     url = 'https://api.nasa.gov/EPIC/api/natural/image'
     foto_quantity = 10
     params = {'api_key': api_key, 'count': foto_quantity}
@@ -28,7 +28,7 @@ def main():
     names_foto = 'nasa_epiс_'
     
     os.makedirs(folder_name, mode=0o777, exist_ok=True)
-    photo_urls = save_epic_photo(api_key)
+    photo_urls = get_epic_photo_url(api_key)
     save_files(folder_name, photo_urls, names_foto)
 
 
