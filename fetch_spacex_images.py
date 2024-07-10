@@ -16,8 +16,8 @@ def main():
     folder_name = 'images'
     name_foto_arrived = 'spacex'
 
-    parser_id = argparse.ArgumentParser(description='Введите ваш id')
-    parser_id.add_argument("--id", help="Введите ваш id", default='5eb87d47ffd86e000604b38a')
+    parser_id = argparse.ArgumentParser(description='Введите ваш id запуска')
+    parser_id.add_argument("--id", help="Введите ваш id запуска", default='5eb87d47ffd86e000604b38a')
     args = parser_id.parse_args()
     id_fotos_arrived = args.id
 
