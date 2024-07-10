@@ -21,12 +21,9 @@ def main():
     args = parser_id.parse_args()
     fotos_arrived_id = args.id
 
-    try:
-        os.makedirs(folder_name, mode=0o777, exist_ok=True)
-        photo_urls = fetch_spacex_last_launch(folder_name, fotos_arrived_id , name_foto_arrived)
-        save_files(folder_name, photo_urls, name_foto_arrived)
-    except requests.HTTPError:
-        print(f"Вы ввели неверный id")
+    os.makedirs(folder_name, mode=0o777, exist_ok=True)
+    photo_urls = fetch_spacex_last_launch(fotos_arrived_id)
+    save_files(folder_name, photo_urls, name_foto_arrived)
 
 
 if __name__ == '__main__':
