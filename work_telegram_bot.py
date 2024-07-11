@@ -19,8 +19,8 @@ def publish_photos(frequency, bot, chat_id, folder_name):
             time.sleep(frequency*3600)
 
 def main():
-    parser_frequency = argparse.ArgumentParser(description='Введите частоту отправки фото в телеграм канал')
-    parser_frequency.add_argument("--frequency", help="Введите частоту отправки фото в телеграм канал", default='4', type=int)
+    parser_frequency = argparse.ArgumentParser(description='Получает частоту отправки фото в телеграм канал')
+    parser_frequency.add_argument("--frequency", help="Получает частоту отправки фото в телеграм канал", default='4', type=int)
     args = parser_frequency.parse_args()
     frequency = args.frequency
     
