@@ -5,10 +5,10 @@ import requests
 import os
 
 
-def get_epic_photo_url(api_key):
+def get_epic_photos_urls(api_key_nasa):
     url = 'https://api.nasa.gov/EPIC/api/natural/image'
     foto_quantity = 10
-    params = {'api_key': api_key, 'count': foto_quantity}
+    params = {'api_key': api_key_nasa, 'count': foto_quantity}
     response = requests.get(url, params=params)
     response.raise_for_status()
     epic_images = response.json()
@@ -23,12 +23,12 @@ def get_epic_photo_url(api_key):
         
 def main():
     load_dotenv()
-    api_key = os.environ['API_KEY_NASA']
+    api_key_nasa = os.environ['API_KEY_NASA']
     folder_name = 'images'
     foto_prefix = 'nasa_epiс_'
     
     os.makedirs(folder_name, mode=0o777, exist_ok=True)
-    photo_urls = get_epic_photo_url(api_key)
+    photo_urls = get_epic_photos_urls(api_key_nasa)
     save_files(folder_name, photo_urls, foto_prefix)
 
 
